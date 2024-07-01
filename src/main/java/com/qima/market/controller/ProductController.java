@@ -38,14 +38,21 @@ public class ProductController {
         Product currentProduct = productService.findProductById(id);
 
         if (currentProduct==null) {
-            System.out.println("Restaurant with id " + id + " not found");
+            System.out.println("Product with id " + id + " not found");
             return new ResponseEntity<ProductDTO>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(productService.updateProduct(id, productDTO), HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity delete(@PathVariable Long id) {
+        Product currentProduct = productService.findProductById(id);
+
+        if (currentProduct==null) {
+            System.out.println("Product with id " + id + " not found");
+            return new ResponseEntity<ProductDTO>(HttpStatus.NOT_FOUND);
+        }
+
         productService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
