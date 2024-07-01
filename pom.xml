@@ -8,11 +8,11 @@
         <version>3.2.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.hostfully</groupId>
+    <groupId>com.qima</groupId>
     <artifactId>product</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>com.hostfully.product.product</name>
-    <description>Hostfully test</description>
+    <name>com.qima.product.product</name>
+    <description>Qima test</description>
     <properties>
         <java.version>17</java.version>
     </properties>
