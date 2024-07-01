@@ -1,38 +1,64 @@
-# producting - Hexagonal API
-Producting API 
+# Marketing - Hexagonal API
+Marketing API 
 
 Port to test 8080
 
 Import this API to Postman:
 
-## To product
-curl --location --request POST 'http://localhost:8080/product/product?categoryName=Bruno&initialDate=01%2F01%2F2024&finalDate=01%2F31%2F2024'
-
-## To update
-curl --location --request PUT 'http://localhost:8080/product/1' \
+## To create product
+curl --location 'http://localhost:8080/products' \
 --header 'Content-Type: application/json' \
---data '{
-    "id": 1,
+--header 'Cookie: JSESSIONID=69606D58D76A9D0E99DE3B148D9D5315' \
+--data '{      
+    "price": 299.99,
+    "description": "Cadeira ergonômica para escritório.",
     "category": {
-        "id": 1,
-        "name": "Bruno2"
+      "id": 1,
+      "name": "Móveis de Escritório"
     },
-    "initialDate": "2024-02-02T00:00:00.000+00:00",
-    "finalDate": "2024-03-02T00:00:00.000+00:00"
+    "available": true,
+    "colour": "Preto"
+ 
 }'
 
-## To cancel
-curl --location --request PUT 'http://localhost:8080/product/cancel/1' \
+## To update product
+curl --location --request PUT 'http://localhost:8080/products/1' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: JSESSIONID=69606D58D76A9D0E99DE3B148D9D5315' \
+--data '{
+    "id": 1,
+    "price": 299.30,
+    "description": "Cadeira ergonômica para escritório.",
+    "category": {
+        "id": 1,
+        "name": "Móveis de Escritório"
+    },
+    "available": true,
+    "colour": "Preto"
+}'
+
+
+
+## To get product
+curl --location 'http://localhost:8080/products/1' \
+--header 'Cookie: JSESSIONID=69606D58D76A9D0E99DE3B148D9D5315' \
 --data ''
 
-## To reproduct
-curl --location --request PUT 'http://localhost:8080/product/reproduct/1' \
---data '
-
-## To delete
-curl --location --request DELETE 'http://localhost:8080/product/1' \
+## To get all products
+curl --location 'http://localhost:8080/products' \
+--header 'Cookie: JSESSIONID=69606D58D76A9D0E99DE3B148D9D5315' \
 --data ''
 
-## To get
-curl --location 'http://localhost:8080/product/1' \
+## To get products sorted by price
+curl --location 'http://localhost:8080/products/sortedByPrice' \
+--header 'Cookie: JSESSIONID=69606D58D76A9D0E99DE3B148D9D5315' \
 --data ''
+
+## To login
+curl --location 'http://localhost:8080/login' \
+--header 'Cookie: JSESSIONID=69606D58D76A9D0E99DE3B148D9D5315'
+
+## To delete product
+curl --location --request DELETE 'http://localhost:8080/products/delete/1' \
+--header 'Cookie: JSESSIONID=69606D58D76A9D0E99DE3B148D9D5315'
+
